@@ -27,8 +27,9 @@ df=df[['Adj. Close','HL_PCT','Adj. Volume','PCT_CNG']]
 forecast_column ='Adj. Close'
 
 df.fillna(-10000,inplace=True) #replacing missing values with -10,000
-forecast_out = int(math.ceil(0.005*len(df)))
+forecast_out = int(math.ceil(0.005*len(df))) #forecast_out defines the number of days shifted into future.
 
+print(" The label is Adj. Close" , forecast_out, "days into the future")
 df['label'] = df[forecast_column].shift(-forecast_out)#the label is Adj.Close some days into future determined by forecast_out
 
  #dropping the columns with no labels ("columns at the end")
